@@ -17,16 +17,13 @@ public class LoginController {
     private ObservableList<String> roles;
 
     @FXML
-    void comboHandler(ActionEvent event) {
-        String role = roleCombo.getValue();
-        roleLabel.setText("You selected: " + role);
-    }
-
-    @FXML
     void initialize() {
         // use observable list to populate the combo box
         roles = FXCollections.observableArrayList("Admin", "User", "Guest");
         roleCombo.setItems(roles);
+
+        // bind the roleLabel text property to the selected role value property
+       roleLabel.textProperty().bind(roleCombo.valueProperty());
     }
 
 
